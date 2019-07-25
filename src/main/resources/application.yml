@@ -1,0 +1,46 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /admin
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/admin?useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true&serverTimezone=UTC
+      username: root
+      password: root
+      initial-size: 8
+      max-active: 20
+      min-idle: 8
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 30000 # 配置一个连接在池中最小生存的时间，单位是毫秒
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #不加这句则默认为myisam引擎
+    show-sql: true
+  freemarker:
+    template-loader-path: classpath:/templates/
+    charset: utf-8
+    cache: false
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    check-template-location: true
+    request-context-attribute: request
+    content-type: text/html
+    suffix: .ftl
+
+mybatis-plus:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.liang.admin.entity
+  global-config:
+    db-config:
+      id-type: auto
+#分页插件
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
