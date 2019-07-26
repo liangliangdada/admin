@@ -18,7 +18,7 @@
         <form class="layui-form" method="post" action="${request.getContextPath()}/login/loginto">
             <input name="username" id="username" type="text" placeholder="用户名" autocomplete="off" />
             <input name="password" type="password" id="password" placeholder="密码" autocomplete="off"/>
-            <input value="登录" style="width:100%;" lay-submit lay-filter="loginForm" type="submit">
+            <input value="登录" style="width:100%;" lay-submit lay-filter="loginForm" type="submit" id="submit">
         </form>
     </div>
 </div>
