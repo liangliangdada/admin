@@ -46,7 +46,7 @@
                 dataType:"json",
                 success: function (data) {
                     if(data.success){
-                        window.location.href="${request.getContextPath()}/main/index";
+                        window.location.href="${request.getContextPath()}/home";
                     }else{
                         layer.msg(data.msg, {icon: 5});
                     }
