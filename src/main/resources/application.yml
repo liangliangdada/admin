@@ -33,7 +33,7 @@ spring:
     suffix: .ftl
 
 mybatis-plus:
-  mapper-locations: classpath:mappers/*.xml
+  mapper-locations: classpath:mappers/*/*Mapper.xml
   type-aliases-package: com.liang.admin.entity
   global-config:
     db-config:

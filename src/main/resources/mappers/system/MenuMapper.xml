@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liang.admin.mapper.system.MenuMapper">
+
+    <select id="selectUserMenuList" resultType="com.liang.admin.entity.system.Menu">
+      SELECT t.* from sys_menu t INNER JOIN sys_role_menu t1 on t.id=t1.menu_id WHERE role_id in (SELECT role_id FROM sys_user_role WHERE user_id=#{id})
+    </select>
+
+</mapper>

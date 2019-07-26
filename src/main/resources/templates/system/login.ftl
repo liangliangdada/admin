@@ -18,7 +18,7 @@
         <form class="layui-form" method="post" action="${request.getContextPath()}/login/loginto">
             <input name="username" id="username" type="text" placeholder="用户名" autocomplete="off" />
             <input name="password" type="password" id="password" placeholder="密码" autocomplete="off"/>
-            <input value="登录" style="width:100%;" lay-submit lay-filter="loginForm" type="submit">
+            <input value="登录" style="width:100%;" lay-submit lay-filter="loginForm" type="submit" id="submit">
         </form>
     </div>
 </div>
@@ -39,7 +39,19 @@
                 layer.msg("请输入密码",{icon:5})
                 return false;
             }
-            layer.msg(JSON.stringify(data.field));
+            $.ajax({
+                url: data.form.action,
+                type: data.form.method,
+                data: $(data.form).serialize(),
+                dataType:"json",
+                success: function (data) {
+                    if(data.success){
+                        window.location.href="${request.getContextPath()}/home";
+                    }else{
+                        layer.msg(data.msg, {icon: 5});
+                    }
+                }
+            });
             return false;
         });
     });
