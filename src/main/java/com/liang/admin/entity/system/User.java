@@ -1,5 +1,6 @@
 package com.liang.admin.entity.system;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.liang.admin.entity.BaseEntity;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sys_user")
+@TableName(value = "sys_user")
 public class User extends BaseEntity {
 
     private static final long serialVersionUID = 4925593676519946467L;

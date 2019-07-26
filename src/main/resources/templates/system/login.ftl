@@ -39,7 +39,19 @@
                 layer.msg("请输入密码",{icon:5})
                 return false;
             }
-            layer.msg(JSON.stringify(data.field));
+            $.ajax({
+                url: data.form.action,
+                type: data.form.method,
+                data: $(data.form).serialize(),
+                dataType:"json",
+                success: function (data) {
+                    if(data.success){
+                        window.location.href="${request.getContextPath()}/main/index";
+                    }else{
+                        layer.msg(data.msg, {icon: 5});
+                    }
+                }
+            });
             return false;
         });
     });
