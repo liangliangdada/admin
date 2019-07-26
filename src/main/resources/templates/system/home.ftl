@@ -21,7 +21,7 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:void(0);">
-                    <img src="${request.getContextPath()}/images/userHead.png" class="layui-nav-img">
+                    <img src="${request.getContextPath()}/images/login/user.png" class="layui-nav-img">
                     ${user.username}
                 </a>
                 <dl class="layui-nav-child">
@@ -68,7 +68,7 @@
         <!-- 内容主体区域 -->
         <div class="layui-tab" lay-filter="tab" lay-allowClose="false">
             <ul class="layui-tab-title">
-                <li class="layui-this first-tab" lay-id="0">首页</li>
+                <li class="layui-this first-tab" lay-id="0"><i class="layui-icon layui-icon-home"></i>首页</li>
             </ul>
             <ul class="rightmenu" style="display: none;position: absolute;">
                 <li data-type="closethis">关闭当前</li>
