@@ -1,5 +1,7 @@
 package com.liang.admin.controller.system;
 
+import com.liang.admin.entity.system.PushMessage;
+import com.liang.admin.service.system.SocketIOService;
 import com.liang.admin.utils.JsonResult;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -11,6 +13,7 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -21,6 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("login")
 public class LoginController {
+
+    @Resource
+    private SocketIOService socketIOService;
 
     @RequestMapping("")
     public String login(){
@@ -42,6 +48,11 @@ public class LoginController {
         }
         request.getSession().setAttribute("user", subject.getPrincipal());
         return JsonResult.build(true,"登录成功！");
+    }
+
+    @RequestMapping("sendMsg")
+    public void send(String user,String msg){
+        socketIOService.pushMessageToUser(new PushMessage("88","hello io"));
     }
 
 
