@@ -29,6 +29,11 @@ public class HomeController {
         User user = (User) request.getSession().getAttribute("user");
         List<Menu> menuList = menuService.selectUserMenuList(user.getId());
         request.setAttribute("menuList", menuList);
+        return "system/main";
+    }
+
+    @RequestMapping("index")
+    public String myHome(){
         return "system/home";
     }
 

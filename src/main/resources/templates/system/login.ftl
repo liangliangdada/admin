@@ -6,7 +6,6 @@
     <link rel="shortcut icon" href="./favicon.ico">
     <#include "../common/static.ftl">
     <link href="${request.getContextPath()}/css/login.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
 </head>
 <body>
 <div class="login_box">
@@ -23,7 +22,6 @@
         </form>
     </div>
 </div>
-<div id="console" class="well"></div>
 <script>
     layui.use(['form','layer'], function () {
         var $  = layui.jquery;
@@ -41,19 +39,6 @@
                 layer.msg("请输入密码",{icon:5})
                 return false;
             }
-
-            $.ajax({
-                url: "${request.getContextPath()}/login/sendMsg",
-                type: "post",
-                data: {"user":"88","msg":666},
-                dataType:"json",
-                success: function (data) {
-                    if(data.success){
-                    }else{
-                        layer.msg(data.msg, {icon: 5});
-                    }
-                }
-            });
             $.ajax({
                 url: data.form.action,
                 type: data.form.method,
@@ -70,39 +55,6 @@
             return false;
         });
     });
-
-    var socket;
-    connect();
-
-    function connect() {
-        var loginUserNum = '88';
-        var opts = {
-            query: 'loginUserNum=' + loginUserNum
-        };
-        socket = io.connect('http://localhost:9099', opts);
-        socket.on('connect', function () {
-            console.log("连接成功");
-            serverOutput('<span class="connect-msg">连接成功</span>');
-        });
-        socket.on('push_event', function (data) {
-            output('<span class="username-msg">' + data.content + ' </span>');
-            console.log(data.content);
-        });
-
-        socket.on('disconnect', function () {
-            serverOutput('<span class="disconnect-msg">' + '已下线! </span>');
-        });
-    }
-
-    function output(message) {
-        var element = $("<div>" + " " + message + "</div>");
-        $('#console').prepend(element);
-    }
-
-    function serverOutput(message) {
-        var element = $("<div>" + message + "</div>");
-        $('#console').prepend(element);
-    }
 
 </script>
 

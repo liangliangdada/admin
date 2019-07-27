@@ -76,7 +76,7 @@ public class SocketIOServiceImpl implements SocketIOService {
 
     @Override
     public void pushMessageToUser(PushMessage pushMessage) {
-        String loginUserNum = pushMessage.getLoginUserNum();
+        String loginUserNum = pushMessage.getReceiver();
         if (StringUtils.isNotBlank(loginUserNum)) {
             SocketIOClient client = clientMap.get(loginUserNum);
             if (client != null)

@@ -51,8 +51,9 @@ public class LoginController {
     }
 
     @RequestMapping("sendMsg")
-    public void send(String user,String msg){
-        socketIOService.pushMessageToUser(new PushMessage("88","hello io"));
+    @ResponseBody
+    public void send(PushMessage pushMessage){
+        socketIOService.pushMessageToUser(pushMessage);
     }
 
 

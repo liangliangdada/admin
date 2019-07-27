@@ -15,6 +15,9 @@ public class User extends BaseEntity {
     private static final long serialVersionUID = 4925593676519946467L;
 
     @Column(length = 50)
+    private String name;
+
+    @Column(length = 50)
     private String username;
 
     private String password;
@@ -43,5 +46,13 @@ public class User extends BaseEntity {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

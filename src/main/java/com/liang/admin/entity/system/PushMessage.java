@@ -1,17 +1,21 @@
 package com.liang.admin.entity.system;
 
+import java.time.LocalDateTime;
+
 public class PushMessage {
 
-    private String loginUserNum;
+
+    //发送方
+    private String sender;
+
+    //接收方
+    private String receiver;
 
     private String content;
 
-    public PushMessage(){}
+    private String createTime;
 
-    public PushMessage(String loginUserNum, String content) {
-        this.loginUserNum = loginUserNum;
-        this.content = content;
-    }
+    public PushMessage(){}
 
     public String getContent() {
         return content;
@@ -21,11 +25,29 @@ public class PushMessage {
         this.content = content;
     }
 
-    public String getLoginUserNum() {
-        return loginUserNum;
+
+    public String getSender() {
+        return sender;
     }
 
-    public void setLoginUserNum(String loginUserNum) {
-        this.loginUserNum = loginUserNum;
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+
+    public String getCreateTime() {
+        return LocalDateTime.now().toString();
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 }
